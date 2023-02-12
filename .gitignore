@@ -36,3 +36,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/src/main/webapp/theme/css/
+/src/main/webapp/theme/css/
+/src/main/webapp/theme/vendor/
+/src/main/webapp/theme/js/
