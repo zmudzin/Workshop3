@@ -23,7 +23,7 @@ public class UserDao {
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }
     public static User create(User user) {
-        try (Connection conn = DbUtil.connect()) {
+        try (Connection conn = DbUtil.getConnection()) {
             PreparedStatement statement =
                     conn.prepareStatement(CREATE_USER_QUERY, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, user.getUserName());
@@ -42,7 +42,7 @@ public class UserDao {
         }
     }
     public static User read(int userId) throws SQLException {
-        try (Connection conn = DbUtil.connect()) {
+        try (Connection conn = DbUtil.getConnection()) {
             PreparedStatement getUserByIdStatement = conn.prepareStatement(READ_USER_QUERY);
             getUserByIdStatement.setInt(1, userId);
             ResultSet result = getUserByIdStatement.executeQuery();
@@ -71,19 +71,19 @@ public class UserDao {
        String password = user.getPassword();
        String id= String.valueOf(user.getId());
 
-      DbUtil.insert(DbUtil.connect(),UPDATE_USER_QUERY, username, email, password, id);
+      DbUtil.insert(DbUtil.getConnection(),UPDATE_USER_QUERY, username, email, password, id);
     }
 
     public static void delete(int userId) throws SQLException {
 
         int idToDel = userId;
 
-        DbUtil.remove(DbUtil.connect(), "workshop2.users", idToDel);
+        DbUtil.remove(DbUtil.getConnection(), "workshop2.users", idToDel);
     }
     public static User[] findAll() throws SQLException {
 
 
-            try (Connection conn = DbUtil.connect()) {
+            try (Connection conn = DbUtil.getConnection()) {
                 PreparedStatement getUserByIdStatement = conn.prepareStatement(FINDALL_USER_QUERY);
                 ResultSet result = getUserByIdStatement.executeQuery();
                 User[] users = new User[0];
