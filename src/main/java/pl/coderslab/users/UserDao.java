@@ -1,10 +1,9 @@
-package pl.coderslab.entity;
+package pl.coderslab.users;
 
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class UserDao {
 

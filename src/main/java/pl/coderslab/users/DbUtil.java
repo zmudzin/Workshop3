@@ -1,4 +1,4 @@
-package pl.coderslab.entity;
+package pl.coderslab.users;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
