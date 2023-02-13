@@ -14,27 +14,27 @@ import java.util.List;
 public class UserList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession sess= request.getSession();
+//        List<User> users = new ArrayList<>();
+//        try {
+//            User [] user = UserDao.findAll();
+//            for (User u: user)
+//            {
+//                users.add(new User(u.getUserName(), u.getEmail(),u.getPassword()));
+//            }
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+
 
         try {
-            User [] user = UserDao.findAll();
-            System.out.println(user);
+            UserDao userDao = new UserDao();
+            sess.setAttribute("users", userDao.findAll());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-
-//        List<User> list = new ArrayList<>();
-//        UserDao userDao = new UserDao();
-//        try {
-//            request.setAttribute("list", userDao.findAll());
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//
-//
-//        System.out.println(list);
-        getServletContext().getRequestDispatcher("/users/list.jsp")
+        getServletContext().getRequestDispatcher("/users/result.jsp")
                 .forward(request, response);
     }
 

@@ -3,7 +3,9 @@ package pl.coderslab.users;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class UserDao {
 
@@ -21,7 +23,7 @@ public class UserDao {
     public static String hashPassword(String password) {
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }
-    public User create(User user) {
+    public static User create(User user) {
         try (Connection conn = DbUtil.getConnection()) {
             PreparedStatement statement =
                     conn.prepareStatement(CREATE_USER_QUERY, Statement.RETURN_GENERATED_KEYS);
@@ -85,6 +87,7 @@ public class UserDao {
             try (Connection conn = DbUtil.getConnection()) {
                 PreparedStatement getUserByIdStatement = conn.prepareStatement(FINDALL_USER_QUERY);
                 ResultSet result = getUserByIdStatement.executeQuery();
+               // List<User> list = new ArrayList<>();
                 User[] users = new User[0];
 
                 while (result.next()) {

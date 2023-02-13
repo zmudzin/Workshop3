@@ -95,12 +95,15 @@
                             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 
                 </div>
+
+                <table>
                 <c:forEach items="${list}" var="user">
                     <tr>
-                        <td> ${user.getUserName()}| Autor: ${user.getEmail()}| ISBN: ${user.getId()} <a href="/delete=${list.indexOf(book)}">Delete</a> </td>
+                        <td> ${user} </td>
                     </tr>
                 </c:forEach>
-                <input value="${user.userName}" name="userName" type="text"/>
+                </table>
+
             </div>
             <!-- /.container-fluid -->
 
