@@ -17,10 +17,10 @@ public class UserList extends HttpServlet {
         HttpSession sess= request.getSession();
 
 
-        UserDao userDao = new UserDao();
+      //  UserDao userDao = new UserDao();
         try {
 
-            sess.setAttribute("person", userDao.findAll());
+            sess.setAttribute("person", UserDao.findAll());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

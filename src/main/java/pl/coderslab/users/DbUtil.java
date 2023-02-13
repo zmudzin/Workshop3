@@ -22,8 +22,8 @@ public class DbUtil {
         }
         return dataSource;
     }
-    public static void insert(Connection connect, String query, String... params) {
-        try ( PreparedStatement statement = connect.prepareStatement(query)) {
+    public static void insert(Connection conn, String query, String... params) {
+        try ( PreparedStatement statement = conn.prepareStatement(query)) {
             for (int i = 0; i < params.length; i++) {
                 statement.setString(i + 1, params[i]);
             }

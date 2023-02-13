@@ -97,18 +97,19 @@
                 </div>
                 <!-- Content Row -->
 
-
-
-
-
-
-                <table>
-                    <c:forEach items= "${person}" var="user">
-                        <tr>
-                            <td>${user.getUserName()} ${user.getEmail()}<a href="/user/delete?id=${user.getId()}"> Delete </a><a href="/user/edit?id=${user.getId()}"> Edycja </a><a href="/user/show?id=${user.getId()}"> Pokaż</a> </td>
-                        </tr>
-                    </c:forEach>
-                </table>
+                <form
+                        action="/user/list">
+                    Nazwa
+                    <input type="text"
+                           value="${user.getUserName()}"
+                           name="username"
+                           readonly/>
+                    Email
+                    <input type="text"
+                           value="${user.getEmail()}"
+                           name="email"
+                           readonly/>
+                </form>
 </div>
             </div>
             <!-- /.container-fluid -->

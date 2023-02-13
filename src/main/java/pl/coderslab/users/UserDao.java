@@ -65,14 +65,13 @@ public class UserDao {
 
         return null;
     }
-    public static void update(User user) throws SQLException {
+    public static void update(User user, int id) throws SQLException {
 
        String username = user.getUserName();
        String email = user.getEmail();
        String password = user.getPassword();
-       String id= String.valueOf(user.getId());
 
-      DbUtil.insert(DbUtil.getConnection(),UPDATE_USER_QUERY, username, email, password, id);
+      DbUtil.insert(DbUtil.getConnection(),UPDATE_USER_QUERY, username, email, password, String.valueOf(id));
     }
 
     public static void delete(int userId) throws SQLException {
