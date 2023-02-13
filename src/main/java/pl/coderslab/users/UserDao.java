@@ -21,7 +21,7 @@ public class UserDao {
     public static String hashPassword(String password) {
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }
-    public static User create(User user) {
+    public User create(User user) {
         try (Connection conn = DbUtil.getConnection()) {
             PreparedStatement statement =
                     conn.prepareStatement(CREATE_USER_QUERY, Statement.RETURN_GENERATED_KEYS);
@@ -103,9 +103,5 @@ public class UserDao {
 
             return null;
         }
-
-    public static void main(String[] args) {
-
-    }
 
 }
