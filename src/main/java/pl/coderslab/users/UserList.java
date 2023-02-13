@@ -15,26 +15,17 @@ public class UserList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession sess= request.getSession();
-//        List<User> users = new ArrayList<>();
-//        try {
-//            User [] user = UserDao.findAll();
-//            for (User u: user)
-//            {
-//                users.add(new User(u.getUserName(), u.getEmail(),u.getPassword()));
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
 
 
+        UserDao userDao = new UserDao();
         try {
-            UserDao userDao = new UserDao();
-            sess.setAttribute("users", userDao.findAll());
+
+            sess.setAttribute("person", userDao.findAll());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        getServletContext().getRequestDispatcher("/users/result.jsp")
+        getServletContext().getRequestDispatcher("/users/list.jsp")
                 .forward(request, response);
     }
 

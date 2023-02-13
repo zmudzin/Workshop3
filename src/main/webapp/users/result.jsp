@@ -9,9 +9,15 @@
 <body>
 
 <table>
-    <c:forEach items="<%= session.getAttribute(\"users\") %>" var="user">
+<%--    <%HttpSession sess = request.getSession();--%>
+<%--        User[] users= (User[]) sess.getAttribute("person");--%>
+<%--        for (User u:users){--%>
+<%--            response.getWriter().append(u.getUserName());--%>
+<%--        }--%>
+<%--    %>--%>
+    <c:forEach items= "${person}" var="user">
         <tr>
-            <td>Użytkownik: ${user} <a href="/delete=${""}">Delete</a> </td>
+            <td>${user}</td>
         </tr>
     </c:forEach>
 </table>
